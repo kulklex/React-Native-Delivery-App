@@ -1,8 +1,9 @@
-import { Text, View, SafeAreaView, Image } from 'react-native'
+import { Text, View, SafeAreaView, Image, TextInput, ScrollView } from 'react-native'
 import React, { useLayoutEffect } from 'react'
 import { styled } from 'nativewind'
 import { useNavigation } from '@react-navigation/native'
-import { UserIcon, ChevronDownIcon, AdjustmentsVerticalIcon,  } from 'react-native-heroicons/outline'
+import { UserIcon, ChevronDownIcon, AdjustmentsVerticalIcon, MagnifyingGlassIcon } from 'react-native-heroicons/outline'
+import Categories from '../components/Categories'
 
 const StyledView = styled(View)
 const StyledText = styled(Text)
@@ -25,7 +26,7 @@ const HomeScreen = () => {
         <StyledView>
 
             {/* Header */}
-            <StyledView className="flex flex-row pb-3 items-center mx-4 space-x-2">
+            <StyledView className="flex flex-row pb-3 items-center mx-4 space-x-2 px-1">
                 <Image 
                     source={{ uri:'https://links.papareact.com/wru',}}
                     className="h-7 w-7 bg-gray-300 p-4 rounded-full"
@@ -43,13 +44,23 @@ const HomeScreen = () => {
             </StyledView>
 
             {/* Search */}
-            <StyledView>
-                <StyledView>
-                    
+            <StyledView className="px-4 pb-2 space-x-2 flex-row items-center">
+                <StyledView className='flex-row flex-1 space-x-2 bg-gray-200 p-3'>
+                    <MagnifyingGlassIcon color="gray" size={20} />
+                    <TextInput placeholder='Restaurants and cuisines' keyboardType='default' />
                 </StyledView>
 
                 <AdjustmentsVerticalIcon color="#00CC88" />
             </StyledView>
+
+            {/* Body */}
+            <ScrollView className="bg-gray-100" contentContainerStyle={{paddingBottom: 100,}}>
+                {/* Categories */}
+                <Categories />                
+
+
+                {/* Featured role */}
+            </ScrollView>
         </StyledView>
       </SafeAreaView>
     )
