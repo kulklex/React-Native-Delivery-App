@@ -1,5 +1,3 @@
-import {defineField, defineType} from 'sanity'
-
 export default {
   name: 'restaurant',
   title: 'Restaurant',
@@ -8,7 +6,7 @@ export default {
     {
       name: "title",
       type: "string",
-      title: "Restauarant name",
+      title: "Restaurant name",
       validation: (Role) => Role.required(), 
     },
     {
@@ -49,13 +47,13 @@ export default {
       title: "Category",
       validation: (Role) => Role.required(),
       type: "reference",
-      to: [{type: "reference"}],
+      to: [{type: "category"}],
     },
     {
       name: "dishes",
       type: "array",
       title: "Dishes",
-      of: 
+      of: [{type: "reference", to: [{type: "dish"}]}],
     },
   ],
 
