@@ -1,4 +1,4 @@
-export default schema =  {
+export default  {
   name: 'dish',
   title: 'Dish',
   type: 'document',

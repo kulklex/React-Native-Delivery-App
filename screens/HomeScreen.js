@@ -4,6 +4,7 @@ import { styled } from 'nativewind'
 import { useNavigation } from '@react-navigation/native'
 import { UserIcon, ChevronDownIcon, AdjustmentsVerticalIcon, MagnifyingGlassIcon } from 'react-native-heroicons/outline'
 import Categories from '../components/Categories'
+import FeaturedRole from '../components/FeaturedRow'
 
 const StyledView = styled(View)
 const StyledText = styled(Text)
@@ -54,12 +55,22 @@ const HomeScreen = () => {
             </StyledView>
 
             {/* Body */}
-            <ScrollView className="bg-gray-100" contentContainerStyle={{paddingBottom: 100,}}>
+            <ScrollView 
+                className="bg-gray-100" 
+                contentContainerStyle={{paddingBottom: 100,}}
+            >
                 {/* Categories */}
                 <Categories />                
 
 
-                {/* Featured role */}
+                {/* Featured */}
+                <FeaturedRole id="1" title="Featured" description="Paid placements from our partners" featuredCategory="featured" />
+
+                {/* Tasty */}
+                <FeaturedRole id="1" title="Tasty Discounts" description="Everyone's been enjoying these juicy discounts" featuredCategory="discounts" />
+
+                {/* Offers near you */}
+                <FeaturedRole id="1" title="Offers near you!" description="Why not support your local restaurants" featuredCategory="offers" />
             </ScrollView>
         </StyledView>
       </SafeAreaView>
