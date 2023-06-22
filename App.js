@@ -1,4 +1,4 @@
-import { Text, View } from 'react-native'
+import 'react-native-url-polyfill/auto' // Solves Url error for IOS 
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from './screens/HomeScreen';
