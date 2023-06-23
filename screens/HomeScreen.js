@@ -1,10 +1,13 @@
 import { Text, View, SafeAreaView, Image, TextInput, ScrollView } from 'react-native'
-import React, { useLayoutEffect } from 'react'
+import React, { useEffect, useLayoutEffect, useState } from 'react'
 import { styled } from 'nativewind'
 import { useNavigation } from '@react-navigation/native'
 import { UserIcon, ChevronDownIcon, AdjustmentsVerticalIcon, MagnifyingGlassIcon } from 'react-native-heroicons/outline'
 import Categories from '../components/Categories'
-import FeaturedRole from '../components/FeaturedRow'
+import FeaturedRow from '../components/FeaturedRow'
+import OtherRow from '../components/OtherRow'
+import DishesRow from '../components/DishesRow'
+
 
 const StyledView = styled(View)
 const StyledText = styled(Text)
@@ -14,6 +17,7 @@ const StyledText = styled(Text)
 const HomeScreen = () => {
     const navigation = useNavigation()
 
+    // A synchronous hook that executes before the browser paints a screen(before it renders data fetched asynchronously)
     useLayoutEffect(() => {
         navigation.setOptions({
             headerTitle: ``,
@@ -21,11 +25,10 @@ const HomeScreen = () => {
         })
     }, [])
 
-
+    
     return (
-      <SafeAreaView className="bg-white pt-5 px-1">
+      <SafeAreaView className="bg-white pt-5  p-2 my-2">
         <StyledView>
-
             {/* Header */}
             <StyledView className="flex flex-row pb-3 items-center mx-4 space-x-2 px-1">
                 <Image 
@@ -62,15 +65,17 @@ const HomeScreen = () => {
                 {/* Categories */}
                 <Categories />                
 
+                {/* Restaurants near you */}
+                <OtherRow id="1" title="Restaurants near you!" description="Why not support your local restaurants" featuredCategory="offers" />
+                
+                {/* Tasty */}
+                <DishesRow id="1" title="Tasty Dishes" description="Everyone's been enjoying these juicy discounts" featuredCategory="discounts" />
 
                 {/* Featured */}
-                <FeaturedRole id="1" title="Featured" description="Paid placements from our partners" featuredCategory="featured" />
+                <FeaturedRow id="1" title="Featured" description="Paid placements from our partners" featuredCategory="featured" />
 
-                {/* Tasty */}
-                <FeaturedRole id="1" title="Tasty Discounts" description="Everyone's been enjoying these juicy discounts" featuredCategory="discounts" />
-
-                {/* Offers near you */}
-                <FeaturedRole id="1" title="Offers near you!" description="Why not support your local restaurants" featuredCategory="offers" />
+                
+                
             </ScrollView>
         </StyledView>
       </SafeAreaView>
