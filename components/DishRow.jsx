@@ -3,7 +3,7 @@ import React, { useCallback, useState } from 'react'
 import { urlFor } from '../sanity'
 import { MinusCircleIcon, PlusCircleIcon } from 'react-native-heroicons/outline'
 import { useDispatch, useSelector } from 'react-redux'
-import { addToBasket, selectBasketItemsWithId } from '../redux/basketSlice'
+import { addToBasket, removeFromBasket, selectBasketItemsWithId } from '../redux/basketSlice'
 import { memoize } from 'proxy-memoize'
 
 export default function DishRow({id, title, short_description, price, image}) {
@@ -22,7 +22,11 @@ export default function DishRow({id, title, short_description, price, image}) {
         dispatch(addToBasket({id, title, short_description, price, image}))
     }
 
-    const removeItemFromBasket = () => {}
+    const removeItemFromBasket = () => {
+        if (!items.length > 0) return; // To make sure it stops reducing when the length becomes zero
+
+        dispatch(removeFromBasket({id}))
+    }
 
 
     return (<>
@@ -48,8 +52,8 @@ export default function DishRow({id, title, short_description, price, image}) {
 
     {isPressed && (<View className="bg-white px-4">
         <View className="flex-row items-center space-x-2 py-3">
-            <TouchableOpacity>
-                <MinusCircleIcon color="#00CC88" size={40} />
+            <TouchableOpacity onPress={removeItemFromBasket} disabled={!items.length}>
+                <MinusCircleIcon color={items.length > 0 ? "#00CC88" : "gray" } size={40} />
             </TouchableOpacity>
 
             <Text>
