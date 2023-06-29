@@ -29,7 +29,7 @@ export default function OtherRow({id, title, description, featuredCategory}) {
         `).then(data => {
             setRestaurants(data)
         })
-    }),[restaurants]
+    }),[restaurants, id]
     
     return (
     <View className="">
