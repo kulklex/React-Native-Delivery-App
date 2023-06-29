@@ -20,7 +20,7 @@ const [dishes, setDishes] = useState([])
             image,
         } 
     `).then((data) => setDishes(data))
-})
+}, [id])
   
   return (
     <View className="">
@@ -35,7 +35,7 @@ const [dishes, setDishes] = useState([])
       </Text>
 
       <ScrollView horizontal contentContainerStyle={{paddingHorizontal: 15}} showsHorizontalScrollIndicator={false} className="pt-4">
-        {dishes.map((dish) => (<View>
+        {dishes.map((dish) => (<View key={dish?._id}>
             <RestaurantCard 
                 id={dish?._id}
                 imgUrl={dish?.image}

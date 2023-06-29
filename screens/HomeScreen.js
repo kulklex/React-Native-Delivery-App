@@ -69,10 +69,10 @@ const HomeScreen = () => {
                 <OtherRow id="1" title="Restaurants near you!" description="Why not support your local restaurants" featuredCategory="offers" />
                 
                 {/* Tasty */}
-                <DishesRow id="1" title="Tasty Dishes" description="Everyone's been enjoying these juicy discounts" featuredCategory="discounts" />
+                <DishesRow id="2" title="Tasty Dishes" description="Everyone's been enjoying these juicy discounts" featuredCategory="discounts" />
 
                 {/* Featured */}
-                <FeaturedRow id="1" title="Featured" description="Paid placements from our partners" featuredCategory="featured" />
+                <FeaturedRow id="3" title="Featured" description="Paid placements from our partners" featuredCategory="featured" />
 
                 
                 
