@@ -1,9 +1,10 @@
 import { View, Text, TouchableOpacity, Image } from 'react-native'
-import React, { useState } from 'react'
+import React, { useCallback, useState } from 'react'
 import { urlFor } from '../sanity'
 import { MinusCircleIcon, PlusCircleIcon } from 'react-native-heroicons/outline'
 import { useDispatch, useSelector } from 'react-redux'
 import { addToBasket, selectBasketItemsWithId } from '../redux/basketSlice'
+import { memoize } from 'proxy-memoize'
 
 export default function DishRow({id, title, short_description, price, image}) {
 
@@ -13,13 +14,14 @@ export default function DishRow({id, title, short_description, price, image}) {
     const dispatch = useDispatch()
 
     
-    const items = useSelector((state) => selectBasketItemsWithId(state, id))
-    console.log(items)
+    // const items = useSelector((state) => selectBasketItemsWithId(state, id))
+    const items = useSelector(useCallback(memoize(state => selectBasketItemsWithId(state, id))))
+    
 
     const addItemToBasket = () => {
         dispatch(addToBasket({id, title, short_description, price, image}))
     }
-0
+
     const removeItemFromBasket = () => {}
 
 
