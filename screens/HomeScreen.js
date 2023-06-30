@@ -27,8 +27,8 @@ const HomeScreen = () => {
 
     
     return (
-      <SafeAreaView className="bg-white pt-5  p-2 my-2">
-        <StyledView>
+      <SafeAreaView className="bg-white pt-5  p-2 my-2 pb-30">
+        <StyledView className='pb-36'>
             {/* Header */}
             <StyledView className="flex flex-row pb-3 items-center mx-4 space-x-2 px-1">
                 <Image 

@@ -4,6 +4,9 @@ import { useRoute, useNavigation } from '@react-navigation/native'
 import { urlFor } from '../sanity'
 import { ArrowLeftIcon, ChevronRightIcon, MapPinIcon, QuestionMarkCircleIcon, StarIcon } from 'react-native-heroicons/outline'
 import DishRow from '../components/DishRow'
+import BasketCard from '../components/BasketCard'
+import { useDispatch } from 'react-redux'
+import { setRestaurant } from '../redux/restaurantSlice'
 
 
 export default function RestaurantScreen() {
@@ -13,6 +16,8 @@ export default function RestaurantScreen() {
 
     const navigation = useNavigation()
 
+    const dispatch = useDispatch()
+
     useLayoutEffect(() => {
         navigation.setOptions({
             headerTitle: ``,
@@ -20,7 +25,15 @@ export default function RestaurantScreen() {
         })
     }, [])
 
-  return (
+
+    useEffect(() => {
+        dispatch(setRestaurant({id, imgUrl, url, title, rating, genre, address, short_description, dishes, long, lat}))
+    }, [dispatch])
+
+  return (<>
+    {dishes && <BasketCard />}
+
+
     <ScrollView>
       <View className="relative bg-gray-700">
         <Image 
@@ -59,7 +72,7 @@ export default function RestaurantScreen() {
             </TouchableOpacity>
         </View>
 
-        {dishes && <View>
+        {dishes && <View className="pb-36">
             <Text className="px-4 pt-6 mb-3 font-bold text-xl">
                 Menu
             </Text>
@@ -78,5 +91,5 @@ export default function RestaurantScreen() {
         </View>}
       </View>
     </ScrollView>
-  )
+  </>)
 }
